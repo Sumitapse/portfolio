@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sumit Kumar | thesumit.tech | Student & Creative Developer</title>
+    <meta name="description" content="Portfolio of Sumit Kumar (thesumit). A student and creative web developer building high-fidelity digital experiences and tools. Explore thesumit tech projects.">
+    <meta name="keywords" content="thesumit, thesumit tech, thesumit.tech, Sumit Kumar, creative developer, student developer, frontend, web development portfolio">
+    <meta name="author" content="Sumit Kumar">
+    
+    <meta property="og:title" content="Sumit Kumar | thesumit.tech">
+    <meta property="og:description" content="Portfolio of Sumit Kumar. A student and creative web developer building digital tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thesumit.tech">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="antialiased selection:bg-white selection:text-black bg-black">
+    <div class="noise"></div>
+    <div class="bg-glow"></div>
+    <div id="message-box">Email copied to clipboard!</div>
+    
+    <div id="command-menu">
+        <div class="cm-overlay" onclick="closeCommandMenu()">
+            <div class="cm-box" onclick="event.stopPropagation()">
+                <div class="cm-search-container">
+                    <i data-lucide="search" class="w-4 h-4 md:w-5 md:h-5 text-white/30"></i>
+                    <input type="text" class="cm-input" placeholder="Type a command or search..." autofocus>
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <span class="px-2 py-1 border border-white/10 rounded-md text-[8px] md:text-[10px] text-white/30 font-bold uppercase">ESC</span>
+                    </div>
+                </div>
+                <div class="cm-scroll-area">
+                    <div class="cm-section-label">Navigation</div>
+                    <div class="cm-item" onclick="navigateToSection('home')">
+                        <i data-lucide="home" class="w-4 h-4 text-white/60"></i>
+                        <div class="flex-1">
+                            <div class="cm-item-title">Home</div>
+                            <div class="cm-item-desc">Go to homepage</div>
+                        </div>
+                        <i data-lucide="corner-down-left" class="w-4 h-4 text-white cm-enter-icon"></i>
+                    </div>
+                    <div class="cm-item" onclick="navigateToSection('about')">
+                        <i data-lucide="user" class="w-4 h-4 text-white/60"></i>
+                        <div class="flex-1">
+                            <div class="cm-item-title">About</div>
+                            <div class="cm-item-desc">Learn about Sumit's journey</div>
+                        </div>
+                        <i data-lucide="corner-down-left" class="w-4 h-4 text-white cm-enter-icon"></i>
+                    </div>
+                    <div class="cm-item" onclick="navigateToSection('work')">
+                        <i data-lucide="layout" class="w-4 h-4 text-white/60"></i>
+                        <div class="flex-1">
+                            <div class="cm-item-title">Selected Projects</div>
+                            <div class="cm-item-desc">View high-fidelity case studies</div>
+                        </div>
+                        <i data-lucide="corner-down-left" class="w-4 h-4 text-white cm-enter-icon"></i>
+                    </div>
+                    <div class="cm-item" onclick="navigateToSection('voices')">
+                        <i data-lucide="message-square" class="w-4 h-4 text-white/60"></i>
+                        <div class="flex-1">
+                            <div class="cm-item-title">Voices</div>
+                            <div class="cm-item-desc">What people are saying</div>
+                        </div>
+                        <i data-lucide="corner-down-left" class="w-4 h-4 text-white cm-enter-icon"></i>
+                    </div>
+
+                    <div class="cm-section-label">Socials</div>
+                    <div class="cm-item" onclick="window.open('https://github.com/the-sumit-dev', '_blank')">
+                        <i data-lucide="github" class="w-4 h-4 text-white/60"></i>
+                        <div class="flex-1">
+                            <div class="cm-item-title">GitHub</div>
+                            <div class="cm-item-desc">@the-sumit-dev</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-4 h-4 text-white cm-enter-icon"></i>
+                    </div>
+                    <div class="cm-item" onclick="window.open('https://instagram.com/_5umit_kumar_', '_blank')">
+                        <i data-lucide="instagram" class="w-4 h-4 text-white/60"></i>
+                        <div class="flex-1">
+                            <div class="cm-item-title">Instagram</div>
+                            <div class="cm-item-desc">@_5umit_kumar_</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-4 h-4 text-white cm-enter-icon"></i>
+                    </div>
+                </div>
+                <div class="cm-footer">
+                    <div class="flex gap-4 uppercase tracking-widest hidden sm:flex">
+                        <span>Privacy</span>
+                        <span>Terms</span>
+                    </div>
+                    <div class="flex items-center gap-6 w-full justify-between sm:w-auto">
+                        <span class="flex items-center gap-2 uppercase tracking-widest"><i data-lucide="move-vertical" class="w-3 h-3"></i> Navigate</span>
+                        <span class="flex items-center gap-2 uppercase tracking-widest"><i data-lucide="corner-down-left" class="w-2.5 h-2.5"></i> Open</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="main-branding" class="fixed top-0 left-0 w-full p-6 md:px-12 md:py-10 flex justify-between items-start z-[5001] pointer-events-none">
+        <div class="reveal-up flex items-center gap-6 pointer-events-auto">
+            <a href="#" class="text-xl md:text-2xl font-black tracking-tighter hover:scale-105 transition-transform block">
+                SUMIT<span class="text-blue-500">.</span>
+            </a>
+        </div>
+    </header>
+
+    <div id="nav-wrapper">
+        <nav id="main-nav" class="flex items-center gap-2">
+            <div class="liquid-glass rounded-full flex items-center relative" onmouseleave="resetPill()">
+                <div id="pill" class="absolute h-[calc(100%-8px)] nav-pill-bg z-0 opacity-0 rounded-full"></div>
+                <button onmouseenter="hoverPill(this)" onclick="setActive(this); scrollToId('home')" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-white/40 rounded-full relative z-10 transition-colors duration-300" data-section="home">Home</button>
+                <button onmouseenter="hoverPill(this)" onclick="setActive(this); scrollToId('about')" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-white/40 rounded-full relative z-10 transition-colors duration-300" data-section="about">About</button>
+                <button onmouseenter="hoverPill(this)" onclick="setActive(this); scrollToId('work')" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-white/40 rounded-full relative z-10 transition-colors duration-300" data-section="work">Work</button>
+                <button onmouseenter="hoverPill(this)" onclick="setActive(this); scrollToId('voices')" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-white/40 rounded-full relative z-10 transition-colors duration-300" data-section="voices">Voices</button>
+                <div class="w-[1px] h-3 bg-white/10 mx-1 hidden md:block z-10"></div>
+                <button onclick="openCommandMenu()" class="p-2 md:p-2.5 text-white/40 hover:text-white transition-colors relative z-10">
+                    <i data-lucide="command" class="w-3 md:w-3.5 h-3 md:h-3.5"></i>
+                </button>
+            </div>
+            <button onclick="openCommandMenu()" class="hidden sm:flex bg-white text-black p-3.5 rounded-full hover:scale-110 active:scale-95 transition-all shadow-2xl z-50">
+                <i data-lucide="command" class="w-4 h-4"></i>
+            </button>
+        </nav>
+    </div>
+
+    <section id="home" class="min-h-[80vh] md:min-h-screen w-full flex flex-col items-center justify-center relative px-6 text-center bg-transparent overflow-hidden">
+        <div class="overflow-hidden mb-4 md:mb-8">
+            <h1 id="hero-name" class="text-[22vw] md:text-[14rem] font-black leading-none tracking-tighter text-white uppercase reveal-text">SUMIT</h1>
+        </div>
+        <div class="hero-sub-reveal opacity-0">
+            <h2 class="text-[10px] md:text-2xl text-white/20 font-light tracking-[0.3em] md:tracking-[0.4em] uppercase mb-4 italic px-4">Student & Creative Developer • Jamtara, India</h2>
+            <p class="text-3xl md:text-8xl italic serif text-white tracking-tight leading-[1.1]">deliver real impact.</p>
+        </div>
+    </section>
+
+    <section id="about" class="px-6 py-20 md:py-40 max-w-[1400px] mx-auto relative bg-transparent">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 relative">
+            <div class="bento-card col-span-1 reveal-up min-h-[350px] md:h-[500px]">
+                <div class="mb-auto">
+                    <h3 class="text-3xl md:text-4xl font-bold tracking-tighter mb-2">Sumit <span class="serif font-light text-white/40 italic">Kumar</span></h3>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex items-center gap-2 text-white/30 text-[8px] md:text-[9px] font-bold uppercase tracking-widest">
+                            <i data-lucide="map-pin" class="w-3 h-3 text-emerald-500"></i>
+                            <span>Jamtara, Jharkhand • <span id="current-time-text">--:--</span></span>
+                        </div>
+                        <div class="flex items-center gap-2 text-white/30 text-[8px] md:text-[9px] font-bold uppercase tracking-widest mt-1">
+                            <i data-lucide="graduation-cap" class="w-3 h-3 text-blue-500"></i>
+                            <span>Secondary School Student</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-3 md:gap-4 mt-6 md:mt-8">
+                    <div class="flex items-center gap-3 md:gap-4 group" onclick="window.open('https://github.com/the-sumit-dev', '_blank')" style="cursor:pointer">
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/30 transition-all">
+                            <i data-lucide="github" class="w-4 h-4 md:w-5 md:h-5 text-white/40"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[7px] md:text-[8px] font-black uppercase text-white/20 tracking-widest">GitHub</span>
+                            <span class="text-xs md:text-sm font-bold text-white/60 tracking-tight">@the-sumit-dev</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 md:gap-4 group" onclick="window.open('https://instagram.com/_5umit_kumar_', '_blank')" style="cursor:pointer">
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/30 transition-all">
+                            <i data-lucide="instagram" class="w-4 h-4 md:w-5 md:h-5 text-white/40"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[7px] md:text-[8px] font-black uppercase text-white/20 tracking-widest">Instagram</span>
+                            <span class="text-xs md:text-sm font-bold text-white/60 tracking-tight">@_5umit_kumar_</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 mt-8 md:mt-auto">
+                    <a href="https://github.com/the-sumit-dev" target="_blank" class="text-white/20 hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+                    <a href="https://instagram.com/_5umit_kumar_" target="_blank" class="text-white/20 hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+
+            <div class="bento-card col-span-1 md:col-span-2 reveal-up min-h-[350px] md:h-[500px]">
+                <div class="flex justify-between items-start">
+                    <div class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-emerald-500"></i><span class="text-[8px] md:text-[9px] uppercase tracking-[0.2em] text-white/30 font-black">Focus Stack</span></div>
+                    <div class="flex flex-wrap gap-1 md:gap-2 justify-end max-w-[60%]">
+                        <span class="pill-tag">HTML5</span><span class="pill-tag">CSS3</span><span class="pill-tag">Tailwind</span>
+                    </div>
+                </div>
+                <div class="mt-auto mb-auto py-6">
+                    <h2 class="text-4xl md:text-7xl font-bold tracking-tighter mb-4 leading-none uppercase">A passion for <br><span class="serif italic text-white/20 font-light lowercase">modern web.</span></h2>
+                    <p class="text-white/40 text-xs md:text-sm max-w-sm leading-relaxed">Exploring high-fidelity aesthetics and performance at <span class="text-white">thesumit.tech</span> through clean code.</p>
+                </div>
+                <div class="flex justify-between mt-auto border-t border-white/5 pt-4 md:pt-6 text-[8px] md:text-[10px] text-white/30 uppercase font-black">
+                    <span>Active Learner</span>
+                    <span>GMT +5:30 IST</span>
+                </div>
+            </div>
+
+            <div class="bento-card col-span-1 reveal-up h-[400px] md:h-[500px] bg-gradient-to-br from-[rgba(8,8,8,0.5)] to-[rgba(17,17,17,0.5)]">
+                <div class="flex justify-between items-start">
+                    <div class="p-2 bg-white/5 rounded-full border border-white/10">
+                        <i data-lucide="hexagon" class="w-3 h-3 text-white/40"></i>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full">
+                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span class="text-[8px] md:text-[9px] font-black uppercase text-white/80 tracking-widest">Available</span>
+                    </div>
+                </div>
+                <div class="mt-auto mb-6 md:mb-8 py-6">
+                    <h3 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-[0.9] mb-6 md:mb-8">
+                        LET'S BUILD <br> SOMETHING <br> 
+                        <span class="serif italic text-white/20 lowercase font-light">that actually works.</span>
+                    </h3>
+                    <div class="email-container group mb-4" onclick="copyEmail()">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="hexagon" class="w-4 h-4 text-white/30 group-hover:text-white transition-all"></i>
+                            <span class="text-base md:text-lg font-bold tracking-tight group-hover:text-blue-400 transition-all italic serif" id="email-text">hello@thesumit.tech</span>
+                        </div>
+                        <div class="email-line"></div>
+                        <p class="text-[7px] md:text-[8px] font-black uppercase tracking-[0.3em] text-white/20 group-hover:text-white/40 transition-all mt-4 md:mt-6 ml-7">TAP TO COPY EMAIL</p>
+                    </div>
+                </div>
+                <button class="w-full bg-white text-black rounded-full py-3 md:py-4 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] hover:scale-[1.03] active:scale-95 transition-all flex items-center justify-center gap-2" onclick="location.href='mailto:hello@thesumit.tech'">
+                    CONNECT NOW <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="px-6 py-20 md:py-40 max-w-[1400px] mx-auto relative bg-transparent">
+        <div class="text-center mb-16 md:mb-24 px-6 reveal-up">
+            <span class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] text-white/30 block mb-4 md:mb-6">SELECTED PROJECTS</span>
+            <h2 class="text-5xl md:text-9xl font-black tracking-tighter uppercase leading-none">
+                The Student <span class="serif italic font-normal text-[var(--accent-pink)] lowercase translate-x-[-10px] inline-block">Toolkit</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 relative">
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-[var(--accent-pink)] transition-colors duration-500">
+                    <i data-lucide="book-open" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-[var(--accent-pink)]"></i>
+                </div>
+                <span class="project-tag">Academics</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Syllabus Tracker</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Comprehensive progress tracker for academic syllabi to ensure 100% coverage before exams.</p>
+                <button onclick="window.open('projects/syllabus-tracker.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-[var(--accent-pink)] transition-colors duration-500">
+                    <i data-lucide="check-circle" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-[var(--accent-pink)]"></i>
+                </div>
+                <span class="project-tag">Organization</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Pro To-Do List</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Minimalist task management system designed for students to manage daily assignments and deadlines.</p>
+                <button onclick="window.open('projects/todo-list.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-blue-500 transition-colors duration-500">
+                    <i data-lucide="timer" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-blue-500"></i>
+                </div>
+                <span class="project-tag">Productivity</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Focus Flow</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Advanced time tracker for monitoring study sessions and optimizing learning cycles.</p>
+                <button onclick="window.open('projects/focus-flow.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-emerald-500 transition-colors duration-500">
+                    <i data-lucide="microscope" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-emerald-500"></i>
+                </div>
+                <span class="project-tag">Science</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Element Explorer</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Interactive periodic table designed for rapid lookup and visual chemistry learning.</p>
+                <button onclick="window.open('projects/periodic-table.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-orange-500 transition-colors duration-500">
+                    <i data-lucide="wallet" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-orange-500"></i>
+                </div>
+                <span class="project-tag">Finance</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Budget Wise</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Simplified expense manager for student budgets to track scholarships and savings.</p>
+                <button onclick="window.open('projects/budget-wise.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-yellow-500 transition-colors duration-500">
+                    <i data-lucide="sun" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-yellow-500"></i>
+                </div>
+                <span class="project-tag">Physics</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Ray Visualizer</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Interactive optical diagram generator to visualize reflection and refraction in real-time.</p>
+                <button onclick="window.open('projects/ray-visualizer.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-orange-600 transition-colors duration-500">
+                    <i data-lucide="map" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-orange-600"></i>
+                </div>
+                <span class="project-tag">Geography</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Bharat Maps</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Detailed state-wise visualization of the Indian map for geography students.</p>
+                <button onclick="window.open('projects/bharat-maps.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-red-400 transition-colors duration-500">
+                    <i data-lucide="alarm-clock" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-red-400"></i>
+                </div>
+                <span class="project-tag">Productivity</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Pomodoro Pro</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Specialized study timer focusing on the Pomodoro technique to maintain peak performance.</p>
+                <button onclick="window.open('projects/pomodoro.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+
+            <div class="bento-card reveal-up group hover:translate-y-[-8px]">
+                <div class="mb-6 md:mb-8 p-3 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl border border-white/10 group-hover:border-red-500 transition-colors duration-500">
+                    <i data-lucide="zap" class="w-6 h-6 md:w-8 md:h-8 text-white/60 group-hover:text-red-500"></i>
+                </div>
+                <span class="project-tag">Learning Science</span>
+                <h3 class="text-2xl md:text-3xl font-bold tracking-tighter mb-3 md:mb-4 uppercase">Active Recall Quiz</h3>
+                <p class="text-white/40 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">Dynamic flashcard and quiz generator based on spaced repetition principles.</p>
+                <button onclick="window.open('projects/active-recall.html', '_blank')" class="mt-auto flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white transition-colors">
+                    View Project <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="voices" class="py-20 md:py-40 bg-transparent reveal-up">
+        <div class="text-center mb-16 md:mb-24 px-6">
+            <span class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] text-white/30 block mb-4 md:mb-6">WHAT OTHERS SAY</span>
+            <h2 class="text-5xl md:text-9xl font-black tracking-tighter uppercase leading-none">
+                The Voices <br>
+                <span class="serif italic font-normal text-[var(--accent-pink)] lowercase translate-x-[-5px] md:translate-x-[-10px] inline-block mt-2 md:mt-4">Behind</span>
+            </h2>
+        </div>
+
+        <div class="marquee-container mb-4 md:mb-6">
+            <div class="marquee-inner animate-scroll-left">
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/20"></i></div>
+                            <div><h4>Aarav Mehta</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">Class 12th Topper, Delhi</span></div>
+                        </div>
+                        <i data-lucide="award" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"The Syllabus Tracker was a total game changer. I mapped out my entire prep and topped my finals with ease!"</p>
+                </div>
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/20"></i></div>
+                            <div><h4>Ishita Roy</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">Science Olympiad Ranker</span></div>
+                        </div>
+                        <i data-lucide="microscope" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"Element Explorer made chemistry so intuitive. My scores jumped from average to the highest in my section."</p>
+                </div>
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/40"></i></div>
+                            <div><h4>Kabir Singh</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">Geography Topper</span></div>
+                        </div>
+                        <i data-lucide="map" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"Bharat Maps helped me visualize every state perfectly. I am now the top scorer in Geography."</p>
+                </div>
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/20"></i></div>
+                            <div><h4>Aarav Mehta</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">Class 12th Topper, Delhi</span></div>
+                        </div>
+                        <i data-lucide="award" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"The Syllabus Tracker was a total game changer. I mapped out my entire prep and topped my finals with ease!"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="marquee-container">
+            <div class="marquee-inner animate-scroll-right">
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/20"></i></div>
+                            <div><h4>Rohan Gupta</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">Medical Aspirant</span></div>
+                        </div>
+                        <i data-lucide="zap" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"Active Recall Quiz is why I topped. Spaced repetition tools made it so simple to implement."</p>
+                </div>
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/20"></i></div>
+                            <div><h4>Sanya Verma</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">JEE Qualifier</span></div>
+                        </div>
+                        <i data-lucide="alarm-clock" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"Using Pomodoro Pro, I doubled my effective study hours. Consistent topper since using this toolkit."</p>
+                </div>
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/20"></i></div>
+                            <div><h4>Aditya Raj</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">Physics Medalist</span></div>
+                        </div>
+                        <i data-lucide="sun" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"The Light Ray Visualizer is amazing. Real-time refraction helped me ace my Physics practicals."</p>
+                </div>
+                <div class="voice-card">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-neutral-800 flex items-center justify-center border border-white/5"><i data-lucide="user" class="w-4 h-4 md:w-5 md:h-5 text-white/20"></i></div>
+                            <div><h4>Rohan Gupta</h4><span class="text-[7px] md:text-[9px] font-bold text-white/20 block mt-1">Medical Aspirant</span></div>
+                        </div>
+                        <i data-lucide="zap" class="w-3.5 h-3.5 md:w-4 md:h-4 text-white/20"></i>
+                    </div>
+                    <p>"Active Recall Quiz is why I topped. Spaced repetition tools made it so simple to implement."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[1400px] mx-auto px-6 py-20 md:py-40 reveal-up bg-transparent">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+            <h2 class="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] uppercase">Let's create <br> <span class="text-white/20">something real.</span></h2>
+            <div class="relative flex items-center justify-center">
+                <div class="glowing-orb absolute"></div>
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center relative z-10 cursor-pointer hover:scale-110 transition-transform active:scale-95 shadow-2xl" onclick="location.href='mailto:hello@thesumit.tech'">
+                    <i data-lucide="arrow-right" class="w-8 h-8 md:w-10 md:h-10 text-black"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="max-w-[1400px] mx-auto px-6 pb-24 reveal-up bg-transparent">
+        <div class="bento-card !rounded-[1.5rem] md:!rounded-[2.5rem] p-8 md:p-12 bg-[#050505]/60 border-white/5 backdrop-blur-xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
+                <div class="md:col-span-4">
+                    <span class="text-3xl md:text-4xl font-black block mb-4 md:mb-6 tracking-tighter uppercase">SUMIT</span>
+                    <p class="text-white/40 text-[10px] md:text-[11px] font-semibold leading-relaxed max-w-[280px]">
+                        Building digital experiences that matter, one line of code at a time at thesumit tech. Crafted with obsession.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:col-span-8 md:grid-cols-8 gap-8">
+                    <div class="md:col-span-2">
+                        <h4 class="text-white/20 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] mb-4 md:mb-6">General</h4>
+                        <ul class="flex flex-col gap-2 md:gap-3 text-white/50 text-[10px] md:text-xs font-bold">
+                            <li><button onclick="scrollToId('home')" class="hover:text-white transition-colors">Home</button></li>
+                            <li><button onclick="scrollToId('voices')" class="hover:text-white transition-colors">Voices</button></li>
+                            <li><button onclick="scrollToId('work')" class="hover:text-white transition-colors">Work</button></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <h4 class="text-white/20 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] mb-4 md:mb-6">About</h4>
+                        <ul class="flex flex-col gap-2 md:gap-3 text-white/50 text-[10px] md:text-xs font-bold">
+                            <li><button onclick="scrollToId('about')" class="hover:text-white transition-colors">About Me</button></li>
+                            <li><a href="https://github.com/the-sumit-dev" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
+                            <li><a href="mailto:hello@thesumit.tech" class="hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-span-2 md:col-span-4">
+                        <h4 class="text-white/20 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] mb-4 md:mb-6">Projects</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 md:gap-y-3 text-white/50 text-[10px] md:text-xs font-bold">
+                            <a href="projects/syllabus-tracker.html" class="hover:text-[var(--accent-pink)] transition-colors">Syllabus Tracker</a>
+                            <a href="projects/todo-list.html" class="hover:text-[var(--accent-pink)] transition-colors">Pro To-Do List</a>
+                            <a href="projects/focus-flow.html" class="hover:text-blue-500 transition-colors">Focus Flow</a>
+                            <a href="projects/periodic-table.html" class="hover:text-emerald-500 transition-colors">Element Explorer</a>
+                            <a href="projects/budget-wise.html" class="hover:text-orange-500 transition-colors">Budget Wise</a>
+                            <a href="projects/ray-visualizer.html" class="hover:text-yellow-500 transition-colors">Ray Visualizer</a>
+                            <a href="projects/bharat-maps.html" class="hover:text-orange-600 transition-colors">Bharat Maps</a>
+                            <a href="projects/pomodoro.html" class="hover:text-red-400 transition-colors">Pomodoro Pro</a>
+                            <a href="projects/active-recall.html" class="hover:text-red-500 transition-colors">Active Recall Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-8 text-[8px] md:text-[9px] text-white/10 font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] gap-4">
+                <div>© 2026 thesumit.tech. ALL RIGHTS RESERVED.</div>
+                <div class="opacity-50">OBSESSIVE CRAFTSMANSHIP</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/command-menu.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

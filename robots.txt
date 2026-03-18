@@ -1,0 +1,7 @@
+# https://thesumit.tech/robots.txt
+
+User-agent: *
+Allow: /
+
+# Point to the sitemap for faster indexing
+Sitemap: https://thesumit.tech/sitemap.xml
