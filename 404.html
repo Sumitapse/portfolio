@@ -1,11 +1,353 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Page Not Found</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>404 - Page Not Found | THE SUMIT TECH</title>
+    <meta name="description" content="The page you are looking for does not exist.">
+    
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Fonts & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to your main styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Inline styles to ensure robust responsive layout for 404 specifically -->
+    <style>
+        #command-menu {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #command-menu.active {
+            display: block;
+            opacity: 1;
+        }
+        /* Custom highlight class for arrow navigation */
+        .cm-item.active-item {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
-<body style="text-align:center; font-family:sans-serif; padding:50px;">
-  <h1>404 🚫</h1>
-  <h2>Page Not Found</h2>
-  <a href="/">Go Home</a>
+<body class="antialiased selection:bg-white selection:text-black bg-black">
+    <div class="noise"></div>
+    <div class="bg-glow"></div>
+    
+    <!-- Command Menu (Control Panel) -->
+    <div id="command-menu" class="fixed inset-0 z-[6000]">
+        <div class="cm-overlay absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer" onclick="closeCommandMenu()"></div>
+        <div class="cm-box absolute top-[20%] left-1/2 -translate-x-1/2 w-[90%] md:w-[600px] max-h-[60vh] bg-[#111] border border-white/10 rounded-2xl flex flex-col overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+            <div class="cm-search-container flex items-center gap-3 p-4 border-b border-white/10">
+                <i data-lucide="search" class="w-4 h-4 md:w-5 md:h-5 text-white/30"></i>
+                <input type="text" class="cm-input flex-1 bg-transparent border-none outline-none text-white placeholder-white/30 text-sm" placeholder="Type a command or search..." autofocus>
+                <div class="flex items-center gap-2 md:gap-3">
+                    <span class="px-2 py-1 border border-white/10 rounded-md text-[8px] md:text-[10px] text-white/30 font-bold uppercase">ESC</span>
+                </div>
+            </div>
+            <div class="cm-scroll-area flex-1 overflow-y-auto p-2">
+                <div class="cm-section-label px-3 py-2 text-[10px] uppercase tracking-widest text-white/40 font-bold">Navigation</div>
+                <div class="cm-item flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer transition-colors group" onclick="window.location.href='index.html'">
+                    <i data-lucide="home" class="w-4 h-4 text-white/60"></i>
+                    <div class="flex-1">
+                        <div class="cm-item-title text-sm text-white font-medium group-hover:text-blue-400 transition-colors">Home</div>
+                        <div class="cm-item-desc text-[10px] text-white/40">Go to homepage</div>
+                    </div>
+                    <i data-lucide="corner-down-left" class="w-4 h-4 text-white/0 group-hover:text-white transition-all"></i>
+                </div>
+                <div class="cm-item flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer transition-colors group" onclick="window.location.href='index.html#about'">
+                    <i data-lucide="user" class="w-4 h-4 text-white/60"></i>
+                    <div class="flex-1">
+                        <div class="cm-item-title text-sm text-white font-medium group-hover:text-[var(--accent-pink)] transition-colors">About</div>
+                        <div class="cm-item-desc text-[10px] text-white/40">Learn about Sumit's journey</div>
+                    </div>
+                    <i data-lucide="corner-down-left" class="w-4 h-4 text-white/0 group-hover:text-white transition-all"></i>
+                </div>
+                <div class="cm-item flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer transition-colors group" onclick="window.location.href='index.html#work'">
+                    <i data-lucide="layout" class="w-4 h-4 text-white/60"></i>
+                    <div class="flex-1">
+                        <div class="cm-item-title text-sm text-white font-medium group-hover:text-blue-500 transition-colors">Selected Projects</div>
+                        <div class="cm-item-desc text-[10px] text-white/40">View high-fidelity case studies</div>
+                    </div>
+                    <i data-lucide="corner-down-left" class="w-4 h-4 text-white/0 group-hover:text-white transition-all"></i>
+                </div>
+
+                <div class="cm-section-label px-3 py-2 mt-2 text-[10px] uppercase tracking-widest text-white/40 font-bold">Socials</div>
+                <div class="cm-item flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer transition-colors group" onclick="window.open('https://github.com/the-sumit-dev', '_blank')">
+                    <i data-lucide="github" class="w-4 h-4 text-white/60"></i>
+                    <div class="flex-1">
+                        <div class="cm-item-title text-sm text-white font-medium">GitHub</div>
+                        <div class="cm-item-desc text-[10px] text-white/40">@the-sumit-dev</div>
+                    </div>
+                    <i data-lucide="external-link" class="w-4 h-4 text-white/0 group-hover:text-white transition-all"></i>
+                </div>
+                <div class="cm-item flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 cursor-pointer transition-colors group" onclick="window.open('https://instagram.com/_5umit_kumar_', '_blank')">
+                    <i data-lucide="instagram" class="w-4 h-4 text-white/60"></i>
+                    <div class="flex-1">
+                        <div class="cm-item-title text-sm text-white font-medium">Instagram</div>
+                        <div class="cm-item-desc text-[10px] text-white/40">@_5umit_kumar_</div>
+                    </div>
+                    <i data-lucide="external-link" class="w-4 h-4 text-white/0 group-hover:text-white transition-all"></i>
+                </div>
+            </div>
+            <div class="cm-footer flex items-center justify-between p-3 border-t border-white/10 bg-white/5 text-[10px] text-white/40 uppercase font-bold tracking-widest">
+                <span class="flex items-center gap-2"><i data-lucide="move-vertical" class="w-3 h-3"></i> Navigate</span>
+                <span class="flex items-center gap-2"><i data-lucide="corner-down-left" class="w-3 h-3"></i> Open</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Branding -->
+    <header id="main-branding" class="fixed top-0 left-0 w-full p-6 md:px-12 md:py-10 flex justify-between items-start z-[5001] pointer-events-none">
+        <div class="reveal-up flex items-center gap-6 pointer-events-auto">
+            <a href="index.html" class="text-xl md:text-2xl font-black tracking-tighter hover:scale-105 transition-transform block text-white">
+                SUMIT<span class="text-blue-500">.</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Navigation Bar (Positioned Top Right Initially) -->
+    <div id="nav-wrapper" class="fixed z-[5000] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] top-6 right-6 md:top-10 md:right-12">
+        <nav id="main-nav" class="flex items-center gap-2">
+            <div class="liquid-glass bg-white/5 backdrop-blur-md border border-white/10 rounded-full flex items-center relative p-1.5 shadow-2xl" onmouseleave="resetPill()">
+                <div id="pill" class="absolute h-[calc(100%-12px)] top-[6px] bg-white/10 z-0 opacity-0 rounded-full pointer-events-none transition-all duration-300"></div>
+                <button onmouseenter="hoverPill(this)" onclick="window.location.href='index.html'" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[10px] md:text-xs font-bold uppercase tracking-wider text-white/60 hover:text-white rounded-full relative z-10 transition-colors duration-300">Home</button>
+                <button onmouseenter="hoverPill(this)" onclick="window.location.href='index.html#about'" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[10px] md:text-xs font-bold uppercase tracking-wider text-white/60 hover:text-white rounded-full relative z-10 transition-colors duration-300">About</button>
+                <button onmouseenter="hoverPill(this)" onclick="window.location.href='index.html#work'" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[10px] md:text-xs font-bold uppercase tracking-wider text-white/60 hover:text-white rounded-full relative z-10 transition-colors duration-300">Work</button>
+                <button onmouseenter="hoverPill(this)" onclick="window.location.href='index.html#voices'" class="nav-item px-3 py-2 md:px-5 md:py-2.5 text-[10px] md:text-xs font-bold uppercase tracking-wider text-white/60 hover:text-white rounded-full relative z-10 transition-colors duration-300">Voices</button>
+                
+                <div class="w-[1px] h-4 bg-white/20 mx-1 hidden md:block z-10"></div>
+                
+                <button onclick="openCommandMenu()" class="p-2 md:p-2.5 text-white/40 hover:text-white transition-colors relative z-10">
+                    <i data-lucide="command" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <button onclick="openCommandMenu()" class="hidden sm:flex bg-white text-black p-3 md:p-3.5 rounded-full hover:scale-110 active:scale-95 transition-transform shadow-2xl z-50">
+                <i data-lucide="command" class="w-4 h-4"></i>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Fully Responsive 404 Hero Section -->
+    <section class="min-h-screen w-full flex flex-col items-center justify-center relative px-4 sm:px-6 text-center bg-transparent overflow-hidden">
+        <div class="overflow-hidden mb-2 z-10 w-full flex justify-center">
+            <!-- Adjusted text sizes so it stays responsive and doesn't break mobile view -->
+            <h1 class="text-[35vw] sm:text-[25vw] md:text-[20rem] font-black leading-none tracking-tighter text-white/5 uppercase reveal-text select-none mt-16 md:mt-0">404</h1>
+        </div>
+        <div class="hero-sub-reveal z-10 mt-[-8vw] sm:mt-[-5vw] md:mt-[-5rem]">
+            <h2 class="text-3xl sm:text-5xl md:text-7xl italic serif text-white tracking-tight leading-[1.1] mb-4 sm:mb-6 px-2">Lost in the void.</h2>
+            <p class="text-[10px] sm:text-xs md:text-sm text-white/40 font-light tracking-[0.2em] uppercase mb-8 sm:mb-10 max-w-xs sm:max-w-md mx-auto px-4">The page you are looking for doesn't exist or has been moved.</p>
+            <button onclick="window.location.href='index.html'" class="bg-white text-black rounded-full px-6 py-3 md:px-8 md:py-4 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] hover:scale-[1.03] active:scale-95 transition-transform shadow-2xl shadow-white/10 flex items-center justify-center gap-2 mx-auto">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> RETURN HOME
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-[1400px] w-full mx-auto px-4 sm:px-6 pb-28 md:pb-32 reveal-up bg-transparent relative z-10">
+        <div class="bento-card rounded-3xl md:!rounded-[2.5rem] p-6 sm:p-8 md:p-12 bg-[#050505]/60 border border-white/5 backdrop-blur-xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
+                <div class="md:col-span-4">
+                    <span class="text-2xl sm:text-3xl md:text-4xl font-black block mb-4 md:mb-6 tracking-tighter uppercase text-white">SUMIT</span>
+                    <p class="text-white/40 text-[10px] md:text-[11px] font-semibold leading-relaxed max-w-[280px]">
+                        Building digital experiences that matter, one line of code at a time at thesumit tech. Crafted with obsession.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:col-span-8 md:grid-cols-8 gap-6 sm:gap-8">
+                    <div class="md:col-span-2">
+                        <h4 class="text-white/20 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] mb-4 md:mb-6">General</h4>
+                        <ul class="flex flex-col gap-2 md:gap-3 text-white/50 text-[10px] md:text-xs font-bold">
+                            <li><button onclick="window.location.href='index.html'" class="hover:text-white transition-colors text-left">Home</button></li>
+                            <li><button onclick="window.location.href='index.html#voices'" class="hover:text-white transition-colors text-left">Voices</button></li>
+                            <li><button onclick="window.location.href='index.html#work'" class="hover:text-white transition-colors text-left">Work</button></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <h4 class="text-white/20 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] mb-4 md:mb-6">About</h4>
+                        <ul class="flex flex-col gap-2 md:gap-3 text-white/50 text-[10px] md:text-xs font-bold">
+                            <li><button onclick="window.location.href='index.html#about'" class="hover:text-white transition-colors text-left">About Me</button></li>
+                            <li><a href="https://github.com/the-sumit-dev" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
+                            <li><a href="mailto:hello@thesumit.tech" class="hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-span-2 md:col-span-4">
+                        <h4 class="text-white/20 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] mb-4 md:mb-6">Projects</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 md:gap-y-3 text-white/50 text-[10px] md:text-xs font-bold">
+                            <a href="projects/syllabus-tracker.html" class="hover:text-[var(--accent-pink)] transition-colors">Syllabus Tracker</a>
+                            <a href="projects/todo-list.html" class="hover:text-[var(--accent-pink)] transition-colors">Pro To-Do List</a>
+                            <a href="projects/focus-flow.html" class="hover:text-blue-500 transition-colors">Focus Flow</a>
+                            <a href="projects/periodic-table.html" class="hover:text-emerald-500 transition-colors">Element Explorer</a>
+                            <a href="projects/budget-wise.html" class="hover:text-orange-500 transition-colors">Budget Wise</a>
+                            <a href="projects/ray-visualizer.html" class="hover:text-yellow-500 transition-colors">Ray Visualizer</a>
+                            <a href="projects/bharat-maps.html" class="hover:text-orange-600 transition-colors">Bharat Maps</a>
+                            <a href="projects/pomodoro.html" class="hover:text-red-400 transition-colors">Pomodoro Pro</a>
+                            <a href="projects/active-recall.html" class="hover:text-red-500 transition-colors">Active Recall Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center border-t border-white/5 pt-6 sm:pt-8 text-[8px] md:text-[9px] text-white/20 font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] gap-4 text-center">
+                <div>© 2026 thesumit.tech. ALL RIGHTS RESERVED.</div>
+                <div class="opacity-50">OBSESSIVE CRAFTSMANSHIP</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts specifically isolated for 404 page functionality -->
+    <script>
+        // --- 1. Init Icons ---
+        lucide.createIcons();
+
+        // --- 2. Scroll Animation for Navigation Bar (Top Right -> Top Center) ---
+        const navWrapper = document.getElementById('nav-wrapper');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Apply Top Center styling when scrolled
+                navWrapper.style.top = '1.5rem';
+                navWrapper.style.right = '50%';
+                navWrapper.style.transform = 'translateX(50%)';
+            } else {
+                // Revert to original styling (removes inline styles so tailwind takes over)
+                navWrapper.style.top = '';
+                navWrapper.style.right = '';
+                navWrapper.style.transform = '';
+            }
+        });
+
+        // --- 3. Custom Pill Navigation Hover Logic ---
+        function hoverPill(element) {
+            const pill = document.getElementById('pill');
+            if (pill) {
+                pill.style.opacity = '1';
+                pill.style.width = element.offsetWidth + 'px';
+                pill.style.left = element.offsetLeft + 'px';
+            }
+        }
+
+        function resetPill() {
+            const pill = document.getElementById('pill');
+            if (pill) {
+                pill.style.opacity = '0';
+            }
+        }
+
+        // --- 4. Command Menu Keyboard & Search Engine ---
+        const cmdMenu = document.getElementById('command-menu');
+        const searchInput = document.querySelector('.cm-input');
+        let selectedIndex = -1;
+        let visibleItems = [];
+
+        // Updates which list item is currently highlighted via keyboard
+        function updateSelection() {
+            visibleItems = Array.from(document.querySelectorAll('.cm-item')).filter(item => item.style.display !== 'none');
+            
+            visibleItems.forEach((item, index) => {
+                if (index === selectedIndex) {
+                    item.classList.add('active-item');
+                    item.scrollIntoView({ block: 'nearest' });
+                } else {
+                    item.classList.remove('active-item');
+                }
+            });
+        }
+        
+        function openCommandMenu() {
+            if(cmdMenu) {
+                cmdMenu.classList.add('active');
+                setTimeout(() => {
+                    if(searchInput) searchInput.focus();
+                    selectedIndex = -1; // Reset selection on open
+                    updateSelection();
+                }, 100);
+            }
+        }
+
+        function closeCommandMenu() {
+            if(cmdMenu) {
+                cmdMenu.classList.remove('active');
+            }
+        }
+
+        // Live Search filtering
+        if(searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                document.querySelectorAll('.cm-item').forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    item.style.display = text.includes(term) ? 'flex' : 'none';
+                });
+                selectedIndex = -1; // Reset selection on typing
+                updateSelection();
+            });
+        }
+
+        // Global Keyboard Shortcuts (Arrows, Enter, Esc, Ctrl+K)
+        document.addEventListener('keydown', (e) => {
+            // If command menu is active, capture Arrow Up, Arrow Down and Enter
+            if (cmdMenu.classList.contains('active')) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (visibleItems.length > 0) {
+                        selectedIndex = (selectedIndex + 1) % visibleItems.length;
+                        updateSelection();
+                    }
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (visibleItems.length > 0) {
+                        selectedIndex = (selectedIndex - 1 + visibleItems.length) % visibleItems.length;
+                        updateSelection();
+                    }
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (selectedIndex >= 0 && visibleItems[selectedIndex]) {
+                        // Triggers the onclick handler associated with the selected div
+                        visibleItems[selectedIndex].click();
+                    }
+                } else if (e.key === 'Escape') {
+                    closeCommandMenu();
+                }
+            } else {
+                // Open command menu with Meta/Ctrl + K
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    openCommandMenu();
+                }
+            }
+        });
+
+        // --- 5. Simple Intro Animations ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.reveal-up, .hero-sub-reveal');
+            reveals.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 + (index * 150));
+            });
+            
+            const textReveal = document.querySelector('.reveal-text');
+            if(textReveal) {
+                textReveal.style.opacity = '0';
+                textReveal.style.transform = 'scale(0.95)';
+                textReveal.style.transition = 'all 1s cubic-bezier(0.16, 1, 0.3, 1)';
+                setTimeout(() => {
+                    textReveal.style.opacity = '1';
+                    textReveal.style.transform = 'scale(1)';
+                }, 50);
+            }
+        });
+    </script>
 </body>
 </html>
