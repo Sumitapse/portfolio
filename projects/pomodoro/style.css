@@ -1,0 +1,276 @@
+:root {
+    --bg-color: #000000;
+    --text-main: #ffffff;
+    --text-dim: #94a3b8;
+    /* Volt Yellow Theme */
+    --accent: #F1FF5E; 
+    --accent-glow: rgba(241, 255, 94, 0.6);
+    --accent-faded: rgba(241, 255, 94, 0.08);
+    --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 800px;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+        max-height: none;
+        height: 100vh;
+        padding: 1rem;
+    }
+    .panel { width: 100% !important; height: 50%; }
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    position: relative;
+}
+
+.left-panel {
+    border-right: 1px solid #111;
+}
+
+@media (max-width: 768px) { .left-panel { border-right: none; border-bottom: 1px solid #111; } }
+
+/* Spiral Visualizer with Heavy Glow */
+#spiral-svg {
+    width: 90%;
+    max-width: 420px;
+    filter: drop-shadow(0 0 25px var(--accent-glow));
+}
+
+.spiral-path {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.spiral-ghost {
+    stroke: var(--accent-faded);
+}
+
+.spiral-grow {
+    stroke: var(--accent);
+    transition: stroke-dashoffset 1s linear;
+}
+
+.right-panel {
+    padding: 2rem;
+    text-align: center;
+}
+
+.header-section {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.task-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #111;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    width: 100%;
+    outline: none;
+    transition: var(--transition);
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.task-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px -5px var(--accent-glow);
+}
+
+.focus-label {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    text-shadow: 0 0 30px var(--accent-glow);
+    letter-spacing: -0.02em;
+}
+
+/* Rolling Numeric Timer - Clean Look (No Glow) */
+.timer-section {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(4rem, 10vw, 8.5rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    background: #050505;
+    border-radius: 28px;
+    padding: 0 1.5rem;
+    border: 1px solid #111;
+    color: var(--accent);
+    text-shadow: none;
+}
+
+.digit-box {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 0.7em;
+}
+
+.digit-strip {
+    transition: transform 0.45s cubic-bezier(0.45, 0, 0.55, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.digit {
+    height: 140px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.separator {
+    padding: 0 0.05em;
+    line-height: 130px;
+}
+
+/* Controls */
+.controls-section {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+button {
+    background: #111111;
+    border: 1px solid #222;
+    color: var(--text-main);
+    padding: 0.9rem 1.8rem;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 120px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+button:hover {
+    border-color: var(--accent);
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--accent-faded);
+}
+
+button.primary {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+button.primary:hover {
+    box-shadow: 0 0 40px var(--accent-glow);
+    transform: scale(1.05) translateY(-2px);
+}
+
+/* Quick Add Buttons */
+.quick-add-section {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.btn-small {
+    min-width: 70px;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 12px;
+    background: rgba(241, 255, 94, 0.05);
+    border: 1px solid rgba(241, 255, 94, 0.1);
+    color: var(--accent);
+}
+
+.btn-small:hover {
+    background: var(--accent-faded);
+    border-color: var(--accent);
+}
+
+/* Share Button Styles */
+.share-container {
+    margin-top: 2rem;
+}
+
+#shareBtn {
+    background: transparent;
+    border: 1px dashed var(--accent);
+    color: var(--accent);
+    font-size: 0.8rem;
+    min-width: auto;
+    padding: 0.5rem 1rem;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#shareBtn:hover {
+    opacity: 1;
+    background: var(--accent-faded);
+}
+
+.hidden { display: none; }
+
+#notification {
+    position: fixed;
+    top: 20px;
+    background: #111;
+    border: 1px solid var(--accent);
+    padding: 0.75rem 1.8rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    box-shadow: 0 0 25px var(--accent-glow);
+    transform: translateY(-100px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+
+#notification.show { transform: translateY(0); }
