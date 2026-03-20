@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Flow | Volt Glow Spiral</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="notification">System Live</div>
+
+    <div class="app-container">
+        <div class="panel left-panel">
+            <svg id="spiral-svg" viewBox="0 0 200 200">
+                <path id="spiral-ghost" class="spiral-path spiral-ghost"></path>
+                <path id="spiral-grow" class="spiral-path spiral-grow"></path>
+            </svg>
+        </div>
+
+        <div class="panel right-panel">
+            <div class="header-section">
+                <div id="editMode">
+                    <input type="text" id="taskInput" class="task-input" placeholder="Enter focus objective..." maxlength="25">
+                </div>
+                <div id="focusMode" class="hidden">
+                    <div class="focus-label" id="focusText">Calibrating...</div>
+                </div>
+            </div>
+
+            <div class="timer-section">
+                <div class="digit-box"><div class="digit-strip" id="m10"></div></div>
+                <div class="digit-box"><div class="digit-strip" id="m1"></div></div>
+                <span class="separator">:</span>
+                <div class="digit-box"><div class="digit-strip" id="s10"></div></div>
+                <div class="digit-box"><div class="digit-strip" id="s1"></div></div>
+            </div>
+
+            <div class="controls-section">
+                <button id="startBtn" class="primary">Play</button>
+                <button id="pauseBtn" class="hidden">Pause</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+
+            <div class="quick-add-section">
+                <button class="btn-small" onclick="addTime(5)">+5M</button>
+                <button class="btn-small" onclick="addTime(10)">+10M</button>
+                <button class="btn-small" onclick="addTime(15)">+15M</button>
+            </div>
+
+            <div class="share-container">
+                <button id="shareBtn">Copy Live Sync Link</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
